@@ -31,6 +31,9 @@ public class PigLatinTranslatorTest {
 
     @Test
     public void wordToPigLatin_emptyAndBlankStrings() {
+        assertEquals("",PigLatinTranslator.wordToPigLatin(""));
+        assertEquals(" ", PigLatinTranslator.wordToPigLatin(" "));
+        assertEquals("  ", PigLatinTranslator.wordToPigLatin("  "));
 
     }
 
