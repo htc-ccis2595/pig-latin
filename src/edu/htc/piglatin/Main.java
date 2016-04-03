@@ -1,8 +1,8 @@
 package edu.htc.piglatin;
 
-import edu.htc.file.FileCompareUtil;
-import edu.htc.file.FileParser;
-import edu.htc.file.ListFileWriter;
+import edu.htc.piglatin.file.FileCompareUtil;
+import edu.htc.piglatin.file.FileParser;
+import edu.htc.piglatin.file.ListFileWriter;
 
 import java.io.File;
 import java.io.FileNotFoundException;
