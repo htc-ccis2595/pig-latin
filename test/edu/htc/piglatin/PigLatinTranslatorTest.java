@@ -11,6 +11,7 @@ public class PigLatinTranslatorTest {
 
     @Test
     public void translateToPigLatin(){
+        //Test with capital letters, numbers, symbols
 
     }
 
