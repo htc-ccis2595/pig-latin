@@ -18,11 +18,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        String joe = "JOE";
-        joe = joe.toLowerCase();
-        joe = joe.substring(0, 1).toUpperCase() + joe.substring(1);
-        char test = joe.charAt(0);
-        System.out.println('J' == test);
+     
 
 
         readSamplePlainTextFile();
