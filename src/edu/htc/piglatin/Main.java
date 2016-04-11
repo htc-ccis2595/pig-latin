@@ -25,7 +25,7 @@ public class Main {
 
             translateFileToPigLatin(origFileEnglish, outputFilePigLatin);
             if (FileCompareUtil.compare(origFilePigLatin, outputFilePigLatin)){
-                System.out.println("Translation of file to PigLatin matches expected.");
+                System.out.println("Translation of file to PigLatin matches expected.\n");
             } else {
                 System.out.println("Translation of file to PigLatin does not match expected.");
             }
@@ -49,7 +49,7 @@ public class Main {
         try {
             sentences = FileParser.parseFile(inFilePath);
         } catch (FileNotFoundException e){
-            System.out.println("Could not find file!");
+            System.out.println("Could not find file to translate to Pig Latin!");
             System.out.println(e.getMessage());
         } catch (IOException e){
             System.out.println("An error occurred reading the file.");
@@ -58,7 +58,11 @@ public class Main {
 
         ArrayList<String> translated = new ArrayList<>();
         for (String sentence : sentences) {
-            translated.add(PigLatinTranslator.translateToPigLatin(sentence));
+            try {
+                translated.add(PigLatinTranslator.translateToPigLatin(sentence));
+            } catch (TranslateException e){
+                System.out.println("Failed to translate sentence");
+            }
         }
 
         try {
@@ -75,7 +79,7 @@ public class Main {
         try {
             sentences = FileParser.parseFile(inFilePath);
         } catch (FileNotFoundException e){
-            System.out.println("Could not find file!");
+            System.out.println("Could not find file to tranlate to English!");
             System.out.println(e.getMessage());
         } catch (IOException e){
             System.out.println("An error occurred reading the file.");
@@ -83,8 +87,12 @@ public class Main {
         }
 
         ArrayList<String> translated = new ArrayList<>();
-        for (String sentence : sentences) {
-            translated.add(PigLatinTranslator.translateFromPigLatin(sentence));
+        try {
+            for (String sentence : sentences) {
+                translated.add(PigLatinTranslator.translateFromPigLatin(sentence));
+            }
+        } catch (TranslateException e){
+            System.out.println("Failed to translate sentences");
         }
 
         try {
