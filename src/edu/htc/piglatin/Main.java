@@ -1,8 +1,8 @@
 package edu.htc.piglatin;
 
-import edu.htc.file.FileCompareUtil;
-import edu.htc.file.FileParser;
-import edu.htc.file.ListFileWriter;
+import edu.htc.piglatin.FileCompareUtil;
+import edu.htc.piglatin.FileParser;
+import edu.htc.piglatin.ListFileWriter;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,15 +11,15 @@ import java.util.ArrayList;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, NoSentenceException {
 
         String current = new File( "." ).getCanonicalPath();
 
         String origFileEnglish = ClassLoader.getSystemResource("data/sampleText.txt").getFile();
-        String outputFilePigLatin = current + "/sampleText_PigLatin.txt";
+        String outputFileEnglish = current + "/samplePigLatin_English.txt";
 
         String origFilePigLatin = ClassLoader.getSystemResource("data/samplePigLatin.txt").getFile();
-        String outputFileEnglish = current + "/samplePigLatin_English.txt ";
+        String outputFilePigLatin = current + "/sampleText_PigLatin.txt";
 
         try {
 
@@ -43,7 +43,7 @@ public class Main {
         }
     }
 
-    public static void translateFileToPigLatin(String inFilePath, String outFilePath) {
+    public static void translateFileToPigLatin(String inFilePath, String outFilePath) throws NoSentenceException {
         // Read File
         ArrayList<String> sentences = null;
         try {
@@ -69,7 +69,7 @@ public class Main {
         }
     }
 
-    public static void translateFileFromPigLatin(String inFilePath, String outFilePath) {
+    public static void translateFileFromPigLatin(String inFilePath, String outFilePath) throws NoSentenceException {
         // Read File
         ArrayList<String> sentences = null;
         try {
