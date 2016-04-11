@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 // * on wordFromPigLatin method *
 // Mary, i am unsure as to why when i use StringBuilders in my method the StringBuilder.length() value returns out of bounds
-// When being used as a perameter. That is why i used - 1 after all the .lengh() method calls
+// When being used as a perameter targeting the end of the string. That is why i used - 1 after all the .lengh()
 
 
 
@@ -26,37 +26,60 @@ public class PigLatinTranslator {
             String[] words = sentence.get(i).split(" ");
             for(int y = 0; y < words.length; y++){
 
+
+
                 if(words[y].length() > 0 && words[y] != "\n") {
-                    holder = holder + wordToPigLatin(words[y]);
+                    words[y] = wordToPigLatin(words[y]);
+
+                    words[y] = words[y].toLowerCase();
+                    if(y == 0 || y == 1 && words[0] != "") {
+                        words[y] = words[y].substring(0, 1).toUpperCase() + words[y].substring(1);
+                    }
+                    holder = holder + words[y];
                     holder = holder + " ";
                 }
             }
-            TranslatedSentence.add(holder);
+            if(holder != "") {
+                TranslatedSentence.add(holder);
+            }
             holder = "";
         }
-
-
-
         return TranslatedSentence;
     }
 
     public static ArrayList<String> translateFromPigLatin(ArrayList<String> sentence) {
         ArrayList<String> TranslatedSentence = new ArrayList<String>();
         String holder = "";
-
+        boolean WordShouldBeCaps = false;
         for(int i = 0; i < sentence.size(); i++){
 
             String[] words = sentence.get(i).split(" ");
         for(int y = 0; y < words.length; y++){
+
+            WordShouldBeCaps = false;
+            char firstCharAsUpperCase = words[y].charAt(0);
+            firstCharAsUpperCase = Character.toUpperCase(firstCharAsUpperCase);
+            if(firstCharAsUpperCase == words[y].charAt(0)){
+
+                WordShouldBeCaps = true;
+            }
             if(words[y].length() > 0 && words[y] != "\n") {
-                holder = holder + wordFromPigLatin(words[y]);
+
+                words[y] = wordFromPigLatin(words[y]);
+
+                words[y] = words[y].toLowerCase();
+               if(WordShouldBeCaps == true) {
+                   words[y] = words[y].substring(0, 1).toUpperCase() + words[y].substring(1);
+               }
+                holder = holder + words[y];
                 holder = holder + " ";
             }
         }
-        TranslatedSentence.add(holder);
+            if(holder != "") {
+                TranslatedSentence.add(holder);
+            }
         holder = "";
     }
-
 
 
         return TranslatedSentence;
@@ -69,8 +92,18 @@ public class PigLatinTranslator {
         if (word == "" || word == " ") {
             return word;
         } else {
+            Boolean hasPeriod = false;
+            Boolean hasComma = false;
 
+            if(word.charAt(word.length() -1 ) == '.'){
+                hasPeriod = true;
+            }
+            if(word.charAt(word.length() -1 ) == ','){
+                hasComma = true;
+            }
 
+            word = word.replace(",", "");
+            word = word.replace(".", "");
 
 
             String TranslatedWord = "";
@@ -99,7 +132,12 @@ public class PigLatinTranslator {
                 TranslatedWord = TranslatedWord + "ay";
 
             }
-
+            if(hasPeriod == true){
+                TranslatedWord = TranslatedWord + ".";
+            }
+            if(hasComma == true){
+                TranslatedWord = TranslatedWord + ",";
+            }
 
             return TranslatedWord;
         }
@@ -111,6 +149,16 @@ public class PigLatinTranslator {
        return word;
         }
         else {
+
+            Boolean hasPeriod = false;
+            Boolean hasComma = false;
+
+            if(word.charAt(word.length() -1 ) == '.'){
+                hasPeriod = true;
+            }
+            if(word.charAt(word.length() -1 ) == ','){
+                hasComma = true;
+            }
 
        word = word.replace(",", "");
             word = word.replace(".", "");
@@ -139,6 +187,12 @@ public class PigLatinTranslator {
                 }
                 sb.deleteCharAt(sb.length() - 1);
                 TranslatedWord = sb.toString();
+                if(hasPeriod == true){
+                    TranslatedWord = TranslatedWord + ".";
+                }
+                if(hasComma == true){
+                    TranslatedWord = TranslatedWord + ",";
+                }
                 return TranslatedWord;
             } else {
                 System.out.println(word);

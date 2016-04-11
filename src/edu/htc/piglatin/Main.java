@@ -1,7 +1,11 @@
 package edu.htc.piglatin;
 
-
-
+// ******* Mary *******
+// i was confused on what exactly to do with the Main method.
+// At the very bottom of the instruction on D2L it says
+// the main method should only contain a few lines of code to read the data
+// translate it and then write it to the files.
+// i may have been missing somthing so i was unsure what to do with the prewritten main method you had.
 
 
 import java.io.*;
@@ -13,38 +17,62 @@ public class Main {
     private static ArrayList<String> dataFromPigLatinFile;
 
     public static void main(String[] args) throws IOException {
-   
-        readDataFromPlainTextFile();
 
-        readDataFromPigLatinFile();
+        String joe = "JOE";
+        joe = joe.toLowerCase();
+        joe = joe.substring(0, 1).toUpperCase() + joe.substring(1);
+        char test = joe.charAt(0);
+        System.out.println('J' == test);
 
-        writePlainTextFile();
+
+        readSamplePlainTextFile();
+
+        readSamplePigLatinFile();
+
+        writePlainText();
 
         writePigLatin();
 
 
     }
 
-    public static void readDataFromPlainTextFile() throws IOException{
+    public static void readSamplePlainTextFile() throws IOException{
+   try {
+       dataFromSampleTextFile = FileIo.readFile("src/data/sampleText.txt");
+   }
+   catch(IOException e){
+           System.out.println("Could Not Read Data From English Sample File");
+        }
+   }
 
-        dataFromSampleTextFile = FileIo.readFile("src/data/sampleText.txt");
+    public static void readSamplePigLatinFile() throws IOException{
+        try {
+            dataFromPigLatinFile = FileIo.readFile("src/data/samplePigLatin.txt");
+        }
+        catch(IOException e){
+            System.out.println("Could Not Read Data From Pig Latin Sample File");
+        }
     }
 
-    public static void readDataFromPigLatinFile() throws IOException{
 
-        dataFromPigLatinFile = FileIo.readFile("src/data/samplePigLatin.txt");
-    }
-
-    public static void writePlainTextFile() throws IOException{
+    public static void writePlainText() throws IOException{
         String target;
         for(int i = 0; i < dataFromPigLatinFile.size(); i ++){
-
-        FileIo.writeFile("out/production/Pig Latin Translator/data/PigLatin_English.txt", PigLatinTranslator.translateFromPigLatin(dataFromPigLatinFile));
+try {
+    FileIo.writeFile("out/production/Pig Latin Translator/data/PigLatin_English.txt", PigLatinTranslator.translateFromPigLatin(dataFromPigLatinFile));
+}
+        catch(IOException e){
+                System.out.println("Could Not Write Data To English From Pig Latin File");
+            }
         }
     }
 
     public static void writePigLatin() throws IOException{
-        FileIo.writeFile("out/production/Pig Latin Translator/data/Text_PigLatin.txt", PigLatinTranslator.translateToPigLatin(dataFromSampleTextFile));
-
+        try {
+            FileIo.writeFile("out/production/Pig Latin Translator/data/Text_PigLatin.txt", PigLatinTranslator.translateToPigLatin(dataFromSampleTextFile));
+        }
+        catch(IOException e){
+            System.out.println("Could Not Write Data To Pig Latin To English File");
+        }
     }
 }
