@@ -15,9 +15,9 @@ public class PigLatinTranslator {
         //Read until a space to get the word.
         //?? What to use to store the sentence/strings as it progresses.
         String[] words = sentence.split("\\s+");
-        String pigLatinSentence = "";
+        String pigLatinSentence = wordToPigLatin(words[0]);
 
-        for (int i = 0; i < words.length; i++){
+        for (int i = 1; i < words.length; i++){
             String translatedWord = wordToPigLatin(words[i]);
             pigLatinSentence = pigLatinSentence + " " + translatedWord;
         }
@@ -29,7 +29,7 @@ public class PigLatinTranslator {
     public static String translateFromPigLatin(String sentence) {
         //Same format as translateToPigLatin but use wordFromPigLatin
         String[] words = sentence.split("\\s+");
-        String englishSentence = "";
+        String englishSentence = wordFromPigLatin(words[0]);
 
 
         for (int i = 1; i < words.length; i++){
@@ -51,6 +51,15 @@ public class PigLatinTranslator {
         //if word starts with a vowel, add 'ay to the end.
         //Otherwise read until vowel, move vowel to end of word to beginning of word. Add 'ay to end of original word. End of word should be initial consonants.
         //make sure other punctuation isn't a problem - period stays at the end of the word for example
+        String wordAsPigLatin = "";
+        if(word.isEmpty()){
+            wordAsPigLatin = "";
+            return wordAsPigLatin;
+        } else if (word.trim().length() == 0){
+            wordAsPigLatin = "";
+            return wordAsPigLatin;
+        }
+
         ArrayList<Character> vowels = new ArrayList<Character>();
         vowels.add('a');
         vowels.add('e');
@@ -58,6 +67,12 @@ public class PigLatinTranslator {
         vowels.add('o');
         vowels.add('u');
         vowels.add('y');
+        vowels.add('A');
+        vowels.add('E');
+        vowels.add('I');
+        vowels.add('O');
+        vowels.add('U');
+        vowels.add('Y');
 
         char firstLetter = word.charAt(0);
         String lastLetter = word.substring(word.length()-1);
@@ -67,7 +82,7 @@ public class PigLatinTranslator {
             punctuation = lastLetter;
         }
         int firstVowel = 0;
-        String wordAsPigLatin = "";
+
 
         if (vowels.contains(firstLetter)){
             wordAsPigLatin = word + "'ay";
@@ -94,6 +109,11 @@ public class PigLatinTranslator {
         if(punctuation.length() > 0){
             wordAsPigLatin = wordAsPigLatin + punctuation;
         }
+        wordAsPigLatin = wordAsPigLatin.toLowerCase();
+        if (Character.isUpperCase(firstLetter)){
+
+            wordAsPigLatin = wordAsPigLatin.substring(0,1).toUpperCase() + wordAsPigLatin.substring(1, wordAsPigLatin.length());
+        }
 
         return wordAsPigLatin;
     }
@@ -101,9 +121,19 @@ public class PigLatinTranslator {
     protected static String wordFromPigLatin(String word) {
         //Find 'ay and remove it. Move all letters in front of 'ay to the back of the word
         //make sure punctuation remains in the correct spot
-        String wordAsEnglish = "";
+        String wordAsEnglish;
+        if(word.isEmpty()){
+            wordAsEnglish = "";
+            return wordAsEnglish;
+        } else if (word.trim().length() == 0){
+            wordAsEnglish = "";
+            return wordAsEnglish;
+        }
         String lastLetter = word.substring(word.length()-1);
         String punctuation = "";
+
+        char firstLetter = word.charAt(0);
+
         if (lastLetter.matches(".*\\p{Punct}")){
             word = word.substring(0, word.length() - 1);
             punctuation = lastLetter;
@@ -116,6 +146,12 @@ public class PigLatinTranslator {
 
         if(punctuation.length() > 0){
             wordAsEnglish = wordAsEnglish + punctuation;
+        }
+
+        wordAsEnglish = wordAsEnglish.toLowerCase();
+        if (Character.isUpperCase(firstLetter)){
+
+            wordAsEnglish = wordAsEnglish.substring(0,1).toUpperCase() + wordAsEnglish.substring(1, wordAsEnglish.length());
         }
 
         return wordAsEnglish;

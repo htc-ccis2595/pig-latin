@@ -4,11 +4,13 @@ package edu.htc.piglatin;
 //import edu.htc.file.FileParser;
 //import edu.htc.file.ListFileWriter;
 
+import file.*;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-/*
+
 public class Main {
 
     public static void main(String[] args) throws IOException {
@@ -56,7 +58,7 @@ public class Main {
             System.out.println(e.getMessage());
         }
 
-        ArrayList<String> translated = new ArrayList<>();
+        ArrayList<String> translated = new ArrayList<String>();
         for (String sentence : sentences) {
             translated.add(PigLatinTranslator.translateToPigLatin(sentence));
         }
@@ -82,7 +84,7 @@ public class Main {
             System.out.println(e.getMessage());
         }
 
-        ArrayList<String> translated = new ArrayList<>();
+        ArrayList<String> translated = new ArrayList<String>();
         for (String sentence : sentences) {
             translated.add(PigLatinTranslator.translateFromPigLatin(sentence));
         }
@@ -94,4 +96,4 @@ public class Main {
             System.out.println(e.getMessage());
         }
     }
-}*/
+}
