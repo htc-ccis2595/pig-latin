@@ -1,8 +1,8 @@
 package edu.htc.piglatin;
 
-import edu.htc.file.FileCompareUtil;
-import edu.htc.file.FileParser;
-import edu.htc.file.ListFileWriter;
+import edu.htc.FileCompareUtil;
+import edu.htc.FileParser;
+import edu.htc.ListFileWriter;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, PigLatException {
 
         String current = new File( "." ).getCanonicalPath();
 
@@ -43,7 +43,7 @@ public class Main {
         }
     }
 
-    public static void translateFileToPigLatin(String inFilePath, String outFilePath) {
+    public static void translateFileToPigLatin(String inFilePath, String outFilePath) throws PigLatException {
         // Read File
         ArrayList<String> sentences = null;
         try {
@@ -56,7 +56,7 @@ public class Main {
             System.out.println(e.getMessage());
         }
 
-        ArrayList<String> translated = new ArrayList<>();
+        ArrayList<String> translated = new ArrayList<String>();
         for (String sentence : sentences) {
             translated.add(PigLatinTranslator.translateToPigLatin(sentence));
         }
@@ -69,7 +69,7 @@ public class Main {
         }
     }
 
-    public static void translateFileFromPigLatin(String inFilePath, String outFilePath) {
+    public static void translateFileFromPigLatin(String inFilePath, String outFilePath) throws PigLatException {
         // Read File
         ArrayList<String> sentences = null;
         try {
@@ -82,7 +82,7 @@ public class Main {
             System.out.println(e.getMessage());
         }
 
-        ArrayList<String> translated = new ArrayList<>();
+        ArrayList<String> translated = new ArrayList<String>();
         for (String sentence : sentences) {
             translated.add(PigLatinTranslator.translateFromPigLatin(sentence));
         }
