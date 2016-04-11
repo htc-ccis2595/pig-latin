@@ -50,8 +50,8 @@ public class PigLatinTranslatorTest {
 
     @Test
     public void wordToPigLatin_withPunctuation() {
-        assertEquals("?",PigLatinTranslator.wordToPigLatin("?"));
-        assertEquals("!",PigLatinTranslator.wordToPigLatin("!"));
+        assertEquals("amb'lay!?",PigLatinTranslator.wordToPigLatin("lamb!?"));
+        assertEquals("ey'hay!?",PigLatinTranslator.wordToPigLatin("hey!?"));
 
     }
 

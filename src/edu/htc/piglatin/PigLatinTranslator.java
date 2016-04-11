@@ -53,9 +53,6 @@ public class PigLatinTranslator {
         //Separating the word if there is any punctuation in the word
         String strWord = word.replaceAll("[^a-zA-Z]","");
         String punctuation = word.replaceAll("[a-zA-Z]","");
-        if(punctuation=="\\p{Punct}"){
-            return punctuation;
-        }
 
 
         char startLetter = strWord.charAt(0);
@@ -72,7 +69,7 @@ public class PigLatinTranslator {
             String startConsonant = "";
             startConsonant = String.valueOf(startLetter);
             if (Character.isUpperCase(strWord.charAt(0))) {
-                strWordToPigLatin = strWord.substring(1, 2).toUpperCase() + word.substring(2) + "'" + startConsonant.toLowerCase() + ("ay" + punctuation);
+                strWordToPigLatin = strWord.substring(1, 2).toUpperCase() + strWord.substring(2) + "'" + startConsonant.toLowerCase() + ("ay" + punctuation);
             } else {
                 strWordToPigLatin = strWord.substring(1) + "'" + startConsonant + ("ay" + punctuation);
             }
@@ -110,15 +107,23 @@ public class PigLatinTranslator {
         String partFirst = parts[0];
         String partSecond = parts[1];
         int mark = partSecond.indexOf("ay");
-        String firstLetter = partSecond.substring(0, mark);
+        String firstLetters = partSecond.substring(0, mark);
         String punctuation = partSecond.substring(mark + 2);
 
         //It will check it the first letter is captial
         String strWordFromPigLatin = "";
-        if (Character.isUpperCase(partFirst.charAt(0)) == true) {
-            strWordFromPigLatin = firstLetter.toUpperCase() + partFirst.substring(0, 1).toLowerCase() + partFirst.substring(1) + punctuation;
+        if(firstVowel(partFirst)==true && partSecond.equals("ay")){
+            if (Character.isUpperCase(partFirst.charAt(0)) == true) {
+                strWordFromPigLatin = partFirst.substring(0, 1).toUpperCase() + partFirst.substring(1) + punctuation;
+            }else{
+                strWordFromPigLatin = partFirst.substring(0, 1).toLowerCase() + partFirst.substring(1) + punctuation;
+            }
         } else {
-            strWordFromPigLatin = firstLetter.toLowerCase() + partFirst + punctuation;
+            if (Character.isUpperCase(partFirst.charAt(0)) == true) {
+                strWordFromPigLatin = partSecond.substring(0, 1).toUpperCase() + partFirst.substring(0, 1).toLowerCase() + partFirst.substring(1) + punctuation;
+            } else {
+                strWordFromPigLatin = partSecond.substring(0, 1) + partFirst + punctuation;
+            }
         }
 
         return strWordFromPigLatin;
@@ -132,6 +137,7 @@ public class PigLatinTranslator {
         System.out.println("Word \"eggs\" in pig latin is: " + wordToPigLatin("eggs"));
         System.out.println("Word \"Eggs\" in pig latin is: " + wordToPigLatin("Eggs"));
         System.out.println("Word with punctuation \"lamb?!\" in pig latin is: " + wordToPigLatin("lamb?!"));
+        System.out.println("Word with punctuation \"Lamb?!\" in pig latin is: " + wordToPigLatin("Lamb?!"));
         System.out.println();
         System.out.println("Translating from Pig Latin to English...");
         System.out.println("Word \"amb'lay\" in English is: " + wordFromPigLatin("amb'lay"));

@@ -1,6 +1,6 @@
-his'Tayourse'cays'iayn'aayntroduction'iayo'tayrogramming'payn'iayava.'Jay
-opics'Taynclude'iayundamentals'fayf'oayava'Jayrogramming,'payncluding'iaybject'oayriented'oayrogramming,'payrimitive'payata'dayypes,'tayontrol'caytructures,'sayethods,'maybjects,'oaylasses,'caylass'caynheritance,'iayimple'sayraphical'gayser'uaynterface'iaynd'aayvent'eayriven'dayrograms'paysing'uaywing.'Say
-bject'Oayriented'oayesign'daysing'uayhe'taynified'Uayodeling'Mayanguage'Layill'waylso'aaye'bayntroduced.'iay
-his'Tayourse'cays'iayn'aayxcellent'eayourse'cayoth'bayn'iayerms'tayf'oayork'wayorce'fayelevance'raynd'aayontinuing'cayducation.'eay
-ava'Jays'iayidely'waysed'uayn'iayndustry'iaynd'aays'iayyntactically'sayery'vayimilar'sayo'tayany'mayther'oayopular'payanguages'layuch'says'aayavascript'Jaynd'aayuby.'Ray
-ava'Jays'iaylso'aayidely'waysed'uayn'iayducational'eayettings'saynd'aayf'iayou'yayntend'iayo'tayarn'eay'aayigher'hayegree,'dayhis'tayourse'cayay'mayransfer'tayo'tayover'cayhe'tayntroductory'iaybject'oayriented'oayrogramming'payourse'cayommon'cayt'aayany'mayther'oaynstitutions.'iay
+His'tay ourse'cay is'ay an'ay introduction'ay o'tay rogramming'pay in'ay Ava'jay.
+Opics'tay include'ay undamentals'fay of'ay Ava'jay rogramming'pay, including'ay object'ay oriented'ay rogramming'pay, rimitive'pay ata'day ypes'tay, ontrol'cay tructures'say, ethods'may, objects'ay, lasses'cay, lass'cay inheritance'ay, imple'say raphical'gay user'ay interface'ay and'ay event'ay riven'day rograms'pay using'ay Wing'say.
+Object'ay oriented'ay esign'day using'ay he'tay Unified'ay Odeling'may Anguage'lay ill'way also'ay e'bay introduced'ay.
+His'tay ourse'cay is'ay an'ay excellent'ay ourse'cay oth'bay in'ay erms'tay of'ay ork'way orce'fay elevance'ray and'ay ontinuing'cay education'ay.
+Ava'jay is'ay idely'way used'ay in'ay industry'ay and'ay is'ay yntactically'say ery'vay imilar'say o'tay any'may other'ay opular'pay anguages'lay uch'say as'ay Avascript'jay and'ay Uby'ray.
+Ava'jay is'ay also'ay idely'way used'ay in'ay educational'ay ettings'say and'ay if'ay you'ay intend'ay o'tay earn'ay a'ay igher'hay egree'day, his'tay ourse'cay ay'may ransfer'tay o'tay over'cay he'tay introductory'ay object'ay oriented'ay rogramming'pay ourse'cay ommon'cay at'ay any'may other'ay institutions'ay.
