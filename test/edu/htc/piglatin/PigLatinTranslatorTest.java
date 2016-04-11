@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+
 /**
  * Tests for the PigLatinTranslator.
  */
@@ -11,11 +12,12 @@ public class PigLatinTranslatorTest {
 
     @Test
     public void translateToPigLatin(){
-
+   System.out.print("you ran the test");
     }
 
     @Test
     public void translateToPigLatin_emptyAndBlankStrings(){
+
 
     }
 
