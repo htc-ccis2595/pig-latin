@@ -1,97 +1,74 @@
 package edu.htc.piglatin;
 
-import edu.htc.file.FileCompareUtil;
-import edu.htc.file.FileParser;
-import edu.htc.file.ListFileWriter;
+// ******* Mary *******
+// i was confused on what exactly to do with the Main method.
+// At the very bottom of the instruction on D2L it says
+// the main method should only contain a few lines of code to read the data
+// translate it and then write it to the files.
+// i may have been missing somthing so i was unsure what to do with the prewritten main method you had.
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+
+import java.io.*;
 import java.util.ArrayList;
 
+
 public class Main {
+    private static  ArrayList<String> dataFromSampleTextFile;
+    private static ArrayList<String> dataFromPigLatinFile;
 
     public static void main(String[] args) throws IOException {
 
-        String current = new File( "." ).getCanonicalPath();
+     
 
-        String origFileEnglish = ClassLoader.getSystemResource("data/sampleText.txt").getFile();
-        String outputFilePigLatin = current + "/sampleText_PigLatin.txt";
 
-        String origFilePigLatin = ClassLoader.getSystemResource("data/samplePigLatin.txt").getFile();
-        String outputFileEnglish = current + "/samplePigLatin_English.txt ";
+        readSamplePlainTextFile();
 
+        readSamplePigLatinFile();
+
+        writePlainText();
+
+        writePigLatin();
+
+
+    }
+
+    public static void readSamplePlainTextFile() throws IOException{
+   try {
+       dataFromSampleTextFile = FileIo.readFile("src/data/sampleText.txt");
+   }
+   catch(IOException e){
+           System.out.println("Could Not Read Data From English Sample File");
+        }
+   }
+
+    public static void readSamplePigLatinFile() throws IOException{
         try {
-
-            translateFileToPigLatin(origFileEnglish, outputFilePigLatin);
-            if (FileCompareUtil.compare(origFilePigLatin, outputFilePigLatin)){
-                System.out.println("Translation of file to PigLatin matches expected.");
-            } else {
-                System.out.println("Translation of file to PigLatin does not match expected.");
-            }
-
-            translateFileFromPigLatin(origFilePigLatin, outputFileEnglish);
-            if (FileCompareUtil.compare(origFileEnglish, outputFileEnglish)){
-                System.out.println("Translation of file to English matches expected.");
-            } else {
-                System.out.println("Translation of file to English does not match expected.");
-            }
-
-        } catch (IOException e) {
-            System.out.println("An error occurred comparing the files.");
-            System.out.println(e.getMessage());
+            dataFromPigLatinFile = FileIo.readFile("src/data/samplePigLatin.txt");
+        }
+        catch(IOException e){
+            System.out.println("Could Not Read Data From Pig Latin Sample File");
         }
     }
 
-    public static void translateFileToPigLatin(String inFilePath, String outFilePath) {
-        // Read File
-        ArrayList<String> sentences = null;
-        try {
-            sentences = FileParser.parseFile(inFilePath);
-        } catch (FileNotFoundException e){
-            System.out.println("Could not find file!");
-            System.out.println(e.getMessage());
-        } catch (IOException e){
-            System.out.println("An error occurred reading the file.");
-            System.out.println(e.getMessage());
-        }
 
-        ArrayList<String> translated = new ArrayList<>();
-        for (String sentence : sentences) {
-            translated.add(PigLatinTranslator.translateToPigLatin(sentence));
-        }
-
-        try {
-            ListFileWriter.writeToFile(translated, outFilePath);
-        } catch (IOException e){
-            System.out.println("An error occurred writing the file.");
-            System.out.println(e.getMessage());
+    public static void writePlainText() throws IOException{
+        String target;
+        for(int i = 0; i < dataFromPigLatinFile.size(); i ++){
+try {
+    FileIo.writeFile("out/production/Pig Latin Translator/data/PigLatin_English.txt", PigLatinTranslator.translateFromPigLatin(dataFromPigLatinFile));
+}
+        catch(IOException e){
+                System.out.println("Could Not Write Data To English From Pig Latin File");
+            }
         }
     }
 
-    public static void translateFileFromPigLatin(String inFilePath, String outFilePath) {
-        // Read File
-        ArrayList<String> sentences = null;
+    public static void writePigLatin() throws IOException{
         try {
-            sentences = FileParser.parseFile(inFilePath);
-        } catch (FileNotFoundException e){
-            System.out.println("Could not find file!");
-            System.out.println(e.getMessage());
-        } catch (IOException e){
-            System.out.println("An error occurred reading the file.");
-            System.out.println(e.getMessage());
+            FileIo.writeFile("out/production/Pig Latin Translator/data/Text_PigLatin.txt", PigLatinTranslator.translateToPigLatin(dataFromSampleTextFile));
         }
-
-        ArrayList<String> translated = new ArrayList<>();
-        for (String sentence : sentences) {
-            translated.add(PigLatinTranslator.translateFromPigLatin(sentence));
-        }
-
-        try {
-            ListFileWriter.writeToFile(translated, outFilePath);
-        } catch (IOException e){
-            System.out.println("An error occurred writing the file.");
-            System.out.println(e.getMessage());
+        catch(IOException e){
+            System.out.println("Could Not Write Data To Pig Latin To English File");
         }
     }
 }
