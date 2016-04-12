@@ -1,11 +1,14 @@
 package edu.htc.piglatin;
 
-import edu.htc.file.FileCompareUtil;
-import edu.htc.file.FileParser;
-import edu.htc.file.ListFileWriter;
+import edu.htc.FileCompareUtil;
+import edu.htc.FileParser;
+import edu.htc.ListFileWriter;
+
+
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
