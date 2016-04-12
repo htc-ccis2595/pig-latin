@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, TranslationException {
 
         String current = new File( "." ).getCanonicalPath();
 
@@ -43,7 +43,7 @@ public class Main {
         }
     }
 
-    public static void translateFileToPigLatin(String inFilePath, String outFilePath) {
+    public static void translateFileToPigLatin(String inFilePath, String outFilePath) throws TranslationException {
         // Read File
         ArrayList<String> sentences = null;
         try {
