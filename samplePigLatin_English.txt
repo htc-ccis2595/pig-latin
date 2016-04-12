@@ -1,0 +1,6 @@
+Tis course is an introduction to pogramming in Java.
+Topics include fundamentals of Java pogramming, including object oriented pogramming, pimitive data types, control suctures, methods, aobjects, casses, cass ainheritance, simple gaphical user interface and event diven pograms using Sing.
+Object oriented design using te Unified Modeling Language will also be aintroduced.
+Tis course is an excellent course both in terms of work force relevance and continuing aeducation.
+Java is widely used in industry and is syntactically very similar to many other popular languages such as Javascript and Ruby.
+Java is also widely used in educational settings and if you intend to earn a higher degree, tis course may tansfer to cover te introductory object oriented pogramming course common at many other ainstitutions.
