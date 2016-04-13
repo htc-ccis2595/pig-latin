@@ -55,15 +55,20 @@ public class PigLatinTranslatorTest {
         assertEquals("Mary", PigLatinTranslator.wordFromPigLatin("Ary'may"));
     }
 
-    @Test
+    @Test //good
     public void wordFromPigLatin3(){
         assertEquals("the", PigLatinTranslator.wordFromPigLatin("e'thay"));
     }
 
-    @Test
+    @Test //good
     public void wordFromPigLatin4(){
         assertEquals("eggs", PigLatinTranslator.wordFromPigLatin("eggs'ay"));
     }
+    @Test//good
+    public void wordFromPigLatin5(){
+        assertEquals("programming", PigLatinTranslator.wordFromPigLatin("ogramming'pray"));
+    }
+
 
     @Test
     public void translateFromPigLatin(){
