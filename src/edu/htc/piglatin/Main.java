@@ -1,6 +1,6 @@
 package edu.htc.piglatin;
 
-import edu.htc.file.FileCompareUtil;
+/*import edu.htc.file.FileCompareUtil;
 import edu.htc.file.FileParser;
 import edu.htc.file.ListFileWriter;
 
@@ -94,4 +94,4 @@ public class Main {
             System.out.println(e.getMessage());
         }
     }
-}
+}*/
