@@ -1,5 +1,5 @@
 package edu.htc.piglatin;
-
+import org.junit.Test;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -51,12 +51,14 @@ public class PigLatinTranslatorTest {
 
     @Test
     public void wordToPigLatin_startsWithLowercaseConsonant() {
-
+        String word=PigLatinTranslator.wordToPigLatin("hello");
+        assertEquals("ello'hay",word);
     }
 
     @Test
     public void wordToPigLatin_startsWithCapitalConsonant() {
-
+        String word=PigLatinTranslator.wordToPigLatin("Hello");
+        assertEquals("Ello'hay",word);
     }
 
     @Test
