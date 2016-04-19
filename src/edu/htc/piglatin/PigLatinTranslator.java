@@ -1,8 +1,5 @@
 package edu.htc.piglatin;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-
 /**
  * Created by marymosman on 3/21/16.
  */
@@ -57,7 +54,7 @@ public class PigLatinTranslator {
 
     protected static String wordFromPigLatin(String word) {
 
+        return word;
     }
-
 
 }
